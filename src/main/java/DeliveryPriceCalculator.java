@@ -37,18 +37,13 @@ public class DeliveryPriceCalculator {
 
         if(distance < 0){
             throw new IllegalArgumentException("Distance should be a positive number");
-        }
-
-        if(distance > 30){
+        }else if(distance > 30){
             extraAmount = 300;
-        }
-        if(distance > 10 && distance <= 30){
+        }else if(distance > 10 && distance <= 30){
             extraAmount = 200;
-        }
-        if(distance > 2 && distance <= 10){
+        }else if(distance > 2 && distance <= 10){
             extraAmount = 100;
-        }
-        if(distance > 0 && distance <= 2){
+        }else if(distance > 0 && distance <= 2){
             extraAmount = 50;
         }
         return extraAmount;
