@@ -36,6 +36,51 @@ public class DeliveryPriceCalculatorTest {
         Assertions.assertEquals(expectedPrice, calculator.calculateDeliveryPrice(order));
    }
 
+    @Test
+    void negativeDistanceValidationTest(){
+        DeliveryOrder order = new DeliveryOrder(-1, true, true, DeliveryLoad.HIGH);
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculateDeliveryPrice(order));
+        assertEquals("Distance should be a positive number",
+                exception.getMessage());
+    }
+
+    @Test
+    void distanceBoundaryValueTest(){
+        Assertions.assertEquals(400+100, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+100+50, calculator.calculateDeliveryPrice(new DeliveryOrder(2, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+100+100, calculator.calculateDeliveryPrice(new DeliveryOrder(10, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+100+200, calculator.calculateDeliveryPrice(new DeliveryOrder(30, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+100+300, calculator.calculateDeliveryPrice(new DeliveryOrder(30.001, false, false, DeliveryLoad.NORMAL)));
+    }
+
+    @Test
+    void sizeAmountTest(){
+        Assertions.assertEquals(400+100, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+200, calculator.calculateDeliveryPrice(new DeliveryOrder(0, true, false, DeliveryLoad.NORMAL)));
+    }
+
+    @Test
+    void fragileAmountTest(){
+        Assertions.assertEquals(400+100, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals(400+100+300, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, true, DeliveryLoad.NORMAL)));
+    }
+
+    @Test
+    void loadAmountTest(){
+        Assertions.assertEquals(400+100, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.NORMAL)));
+        Assertions.assertEquals((400+100)*1.2, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.MODERATE)));
+        Assertions.assertEquals((400+100)*1.4, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.HIGH)));
+        Assertions.assertEquals((400+100)*1.6, calculator.calculateDeliveryPrice(new DeliveryOrder(0, false, false, DeliveryLoad.VERY_HIGH)));
+
+    }
+
+
+
+
+
+
+   //Unit tests of private sub-methods using Reflection API
    @Test
    void deliveryIsPossibleTest(){
         assertAll(
