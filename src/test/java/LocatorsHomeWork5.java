@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
+import org.openqa.selenium.NoSuchElementException;
 import java.util.stream.Stream;
 
 public class LocatorsHomeWork5 {
@@ -81,7 +81,7 @@ public class LocatorsHomeWork5 {
             }
             Assertions.assertTrue(actual.contains(expected));
         }catch(NoSuchElementException e){
-            System.out.println("Element with locator: " + xpath + "not found");
+            Assertions.fail("Element with locator: " + xpath + " not found");
         }
     }
 
