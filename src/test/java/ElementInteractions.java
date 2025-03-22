@@ -249,6 +249,8 @@ public class ElementInteractions {
     void colorPickerTest(){
         boolean notImplemented = true;
         Assertions.assertFalse(notImplemented, "Not implemented");
+
+
     }
 
     @Test
@@ -287,6 +289,17 @@ public class ElementInteractions {
             throw new RuntimeException(e);
         }
         driver.navigate().back();
+    }
+
+    void selectYear(){
+
+    }
+    void selectMonth(){
+
+    }
+
+    void selectDay(){
+
     }
 
 
