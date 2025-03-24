@@ -326,8 +326,6 @@ public class ElementInteractions {
             if(d.getText().equals(day)){
                 d.click();
                 break;
-            }else{
-                
             }
         }
     }
