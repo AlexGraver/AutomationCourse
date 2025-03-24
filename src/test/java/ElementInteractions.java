@@ -273,8 +273,16 @@ public class ElementInteractions {
 
     @Test
     void datePickerTest(){
-        boolean notImplemented = true;
-        Assertions.assertFalse(notImplemented, "Not implemented");
+        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+        driver.findElement(DATE_PICKER).click();
+        selectDay("24");
+
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -318,8 +326,8 @@ public class ElementInteractions {
 
     void selectDay(String day){
         List<WebElement> days = driver.findElements(DAY_OPTIONS);
-        int dayCount = Integer.parseInt(day);
-        if(dayCount > days.size() || dayCount < days.size()){
+        int dayNumber = Integer.parseInt(day);
+        if(dayNumber > days.size() || dayNumber < 1){
             throw new IllegalArgumentException("Current month doesn't have such date");
         }
         for(WebElement d: days){
