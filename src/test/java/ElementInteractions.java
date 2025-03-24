@@ -34,9 +34,27 @@ public class ElementInteractions {
     private static final By DEFAULT_RADIO = By.xpath("//input[@id=\"my-radio-2\"]");
     private static final By SUBMIT = By.xpath("//button[@type=\"submit\"]");
     private static final By COLOR_PICKER = By.xpath("//input[@name=\"my-colors\"]");
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final By DATE_PICKER = By.xpath("//input[@name=\"my-date\"]");
+    private static final By DAY_OPTIONS = By.xpath("//*[@class=\"day\"]");
+    private static final By MONTH_OPTIONS = By.xpath("//span[contains(@class, \"month\")]");
+
+    private static final By YEAR_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[1]");
+    private static final By YEAR_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[2]");
+    private static final By YEAR_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[2]");
+
+    private static final By DECADE_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[2]");
+    private static final By DECADE_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[3]");
+    private static final By DECADE_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[3]");
+
+    private static final By CENTURY_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[3]");
+    private static final By CENTURY_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[4]");
+    private static final By CENTURY_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[4]");
+
     private static final By EXAMPLE_RANGE = By.xpath("//input[@name=\"my-range\"]");
     private static final By RETURN_FROM_WEB_FORM = By.xpath("//a[@href=\"./index.html\"]");
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //-------------------------------------NavigationPage--------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------//
@@ -298,8 +316,20 @@ public class ElementInteractions {
 
     }
 
-    void selectDay(){
-
+    void selectDay(String day){
+        List<WebElement> days = driver.findElements(DAY_OPTIONS);
+        int dayCount = Integer.parseInt(day);
+        if(dayCount > days.size() || dayCount < days.size()){
+            throw new IllegalArgumentException("Current month doesn't have such date");
+        }
+        for(WebElement d: days){
+            if(d.getText().equals(day)){
+                d.click();
+                break;
+            }else{
+                
+            }
+        }
     }
 
 
