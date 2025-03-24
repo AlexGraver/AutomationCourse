@@ -1,3 +1,4 @@
+import datePicker.DatePickerLevel_1;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,27 +35,8 @@ public class ElementInteractions {
     private static final By DEFAULT_RADIO = By.xpath("//input[@id=\"my-radio-2\"]");
     private static final By SUBMIT = By.xpath("//button[@type=\"submit\"]");
     private static final By COLOR_PICKER = By.xpath("//input[@name=\"my-colors\"]");
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private static final By DATE_PICKER = By.xpath("//input[@name=\"my-date\"]");
-    private static final By DAY_OPTIONS = By.xpath("//*[@class=\"day\"]");
-    private static final By MONTH_OPTIONS = By.xpath("//span[contains(@class, \"month\")]");
-
-    private static final By YEAR_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[1]");
-    private static final By YEAR_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[2]");
-    private static final By YEAR_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[2]");
-
-    private static final By DECADE_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[2]");
-    private static final By DECADE_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[3]");
-    private static final By DECADE_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[3]");
-
-    private static final By CENTURY_LEVEL = By.xpath("(//th[@class=\"datepicker-switch\"])[3]");
-    private static final By CENTURY_LEVEL_PREV = By.xpath("(//th[@class=\"prev\"])[4]");
-    private static final By CENTURY_LEVEL_NEXT = By.xpath("(//th[@class=\"next\"])[4]");
-
     private static final By EXAMPLE_RANGE = By.xpath("//input[@name=\"my-range\"]");
     private static final By RETURN_FROM_WEB_FORM = By.xpath("//a[@href=\"./index.html\"]");
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //-------------------------------------NavigationPage--------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------//
@@ -267,22 +249,6 @@ public class ElementInteractions {
     void colorPickerTest(){
         boolean notImplemented = true;
         Assertions.assertFalse(notImplemented, "Not implemented");
-
-
-    }
-
-    @Test
-    void datePickerTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        driver.findElement(DATE_PICKER).click();
-        selectDay("24");
-
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Test
@@ -316,30 +282,6 @@ public class ElementInteractions {
         }
         driver.navigate().back();
     }
-
-    void selectYear(){
-
-    }
-    void selectMonth(){
-
-    }
-
-    void selectDay(String day){
-        List<WebElement> days = driver.findElements(DAY_OPTIONS);
-        int dayNumber = Integer.parseInt(day);
-        if(dayNumber > days.size() || dayNumber < 1){
-            throw new IllegalArgumentException("Current month doesn't have such date");
-        }
-        for(WebElement d: days){
-            if(d.getText().equals(day)){
-                d.click();
-                break;
-            }
-        }
-    }
-
-
-
 
 
     //-------------------------------------NavigationPage--------------------------------------------------//
