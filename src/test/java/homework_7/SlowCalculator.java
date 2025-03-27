@@ -72,30 +72,40 @@ public class SlowCalculator {
         Assertions.assertEquals(5, getResult());
     }
 
+    @Test
+    void checkChainActions(){
+        reset();
+        pressNumber(9);
+        sum();
+        pressNumber(4);
+        subtract();
+        pressNumber(3);
+        pressResult();
+
+        Assertions.assertEquals(10, getResult());
+    }
+
+    @Test
+    void checkDoubleResult(){
+        reset();
+        pressNumber(9);
+        devide();
+        pressNumber(2);
+        pressResult();
+
+        Assertions.assertEquals(4.5, getResult());
+    }
+
     @AfterAll
     static void tearDown(){
         driver.quit();
     }
 
+    //============================================================================================================//
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private double getResult(){
+    private float getResult(){
         String result = waitHelper.waitUntilElementClickable(SCREEN).getDomProperty("textContent");
-        return Integer.parseInt(result);
+        return Float.parseFloat(result);
     }
 
     private void reset(){
