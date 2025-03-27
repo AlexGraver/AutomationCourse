@@ -56,6 +56,10 @@ public class WaitHelper {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
+    public void waitUntilAlertIsPresent(){
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+
 
 
 
