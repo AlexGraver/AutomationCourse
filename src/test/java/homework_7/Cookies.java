@@ -1,7 +1,5 @@
 package homework_7;
 
-import helpers.WaitHelper;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,13 +15,11 @@ public class Cookies {
     private static final By REFRESH_COOKIE = By.xpath("//button[@id=\"refresh-cookies\"]");
     private static final By COOKIE_LIST = By.xpath("//p[@id=\"cookies-list\"]");
     private static WebDriver driver;
-    private static WaitHelper waitHelper;
 
     @BeforeAll
     static void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        waitHelper = new WaitHelper(driver);
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
     }
 
