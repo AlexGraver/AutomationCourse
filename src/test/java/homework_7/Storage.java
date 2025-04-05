@@ -13,6 +13,7 @@ import org.openqa.selenium.html5.WebStorage;
 
 public class Storage {
 
+    private static final String PAGE_URL = "https://bonigarcia.dev/selenium-webdriver-java/web-storage.html";
     private static WebDriver driver;
     private static WebStorage webStorage;
     private static final By SHOW_LOCAL_STORAGE = By.xpath("//button[@id=\"display-local\"]");
@@ -22,7 +23,7 @@ public class Storage {
     static void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-storage.html");
+        driver.get(PAGE_URL);
         webStorage = (WebStorage) driver;
     }
 

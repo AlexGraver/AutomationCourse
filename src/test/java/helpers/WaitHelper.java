@@ -1,5 +1,7 @@
 package helpers;
 
+import configs.Configs;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -12,16 +14,13 @@ public class WaitHelper {
     private WebDriver driver;
     private WebDriverWait wait;
     private FluentWait<WebDriver> fluentWait;
-    private static final int IMPLICIT_WAIT_MILLISEC = 500;
-    private static final int EXPLICIT_WAIT_SEC = 10;
-    private static final int FLUENT_TIMEOUT = 30;
-    private static final int FLUENT_POLLING = 10;
+    private Configs configs = ConfigFactory.create(Configs.class);
 
 
     public WaitHelper(WebDriver driver){
         this.driver = driver;
-        initImplicitWait(IMPLICIT_WAIT_MILLISEC);
-        initWebDriverWait(EXPLICIT_WAIT_SEC);
+        initImplicitWait(configs.implicitWait());
+        initWebDriverWait(configs.explicitWait());
     }
 
     private void initImplicitWait(int millisec){
@@ -33,8 +32,8 @@ public class WaitHelper {
     }
 
     public FluentWait<WebDriver> getFluentWait(){
-        return new FluentWait<>(driver).withTimeout(Duration.ofSeconds(FLUENT_TIMEOUT))
-                .pollingEvery(Duration.ofMillis(FLUENT_POLLING))
+        return new FluentWait<>(driver).withTimeout(Duration.ofSeconds(configs.fluentTimeout()))
+                .pollingEvery(Duration.ofMillis(configs.fluentPolling()))
                 .ignoring(TimeoutException.class)
                 .ignoring(ElementClickInterceptedException.class);
     }

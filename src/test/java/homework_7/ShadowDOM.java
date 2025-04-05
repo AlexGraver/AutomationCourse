@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ShadowDOM {
 
+    private static final String PAGE_URL = "https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html";
     private static final By CONTENT = By.cssSelector("#content");
     private static final By SHADOW_CONTENT = By.cssSelector("p");
     private static WebDriver driver;
@@ -25,7 +26,7 @@ public class ShadowDOM {
 
     @Test
     void checkShadowContentIsUnavailable() {
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html");
+        driver.get(PAGE_URL);
         WebElement content = driver.findElement(CONTENT);
         SearchContext shadowRoot = content.getShadowRoot();
 
@@ -35,7 +36,7 @@ public class ShadowDOM {
 
     @Test
     void checkAbilityToReachShadowContentTest() {
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html");
+        driver.get(PAGE_URL);
         WebElement content = driver.findElement(CONTENT);
         SearchContext shadowRoot = content.getShadowRoot();
         WebElement shadowContent = shadowRoot.findElement(SHADOW_CONTENT);
