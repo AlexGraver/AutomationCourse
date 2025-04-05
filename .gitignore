@@ -42,4 +42,4 @@ bin/
 .DS_Store
 
 ### Sycret Keys ###
-###src/test/resources/sycretKey.properties
+src/test/resources/sycretKey.properties
