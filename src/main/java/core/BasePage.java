@@ -19,18 +19,21 @@ public class BasePage {
     private WaitHelper waitHelper;
     private JavascriptExecutor jsExecutor;
     private Actions action;
-    private static WebDriver driver;
+    protected static WebDriver driver = TestDriver.getDriver();;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        driver = TestDriver.getDriver();
         waitHelper = new WaitHelper(driver);
         jsExecutor = (JavascriptExecutor) driver;
         action = new Actions(driver);
     }
 
-    protected static void openPage(String url){
+    public static void openPage(String url){
         driver.get(url);
+    }
+
+    public WebElement findElement(By locator){
+        return waitUntilElementIsPresentInDOM(locator);
     }
 
     public WebElement waitUntilElementIsPresentInDOM(By locator){

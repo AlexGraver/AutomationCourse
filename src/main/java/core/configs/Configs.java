@@ -24,4 +24,6 @@ public interface Configs extends Config{
     @Key("timeout.fluent")
     int fluentTimeout();
 
+    @Key("base.url")
+    String baseUrl();
 }

@@ -29,31 +29,4 @@ public class ElementInteractions {
         }
     }
 
-
-
-
-
-    //====================================================================================================//
-    //--------------------------------------InteractionTests----------------------------------------------//
-    //====================================================================================================//
-
-    @BeforeAll
-    static void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        actions = new Actions(driver);
-    }
-
-
-
-
-
-
-
-
-
-    @AfterAll
-    static void tearDown(){
-         driver.quit();
-    }
 }

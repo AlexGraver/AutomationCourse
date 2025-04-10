@@ -31,184 +31,184 @@ public class WebFormPage extends BasePage {
 
     //-------------------------------------WebFormPage-----------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------//
-    @Test
-    void openWebFormPagePageTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        Assertions.assertTrue(correctPageIsOpened(HEADER_WEB_FORM, "Web form"));
-    }
-
-    @Test
-    void inputTextTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        String textToEnter = "MyCustomText";
-        WebElement textField = driver.findElement(TEXT_INPUT);
-        String defaultText = textField.getDomProperty("defaultValue");
-        if(!(defaultText.equals(""))){
-            textField.clear();
-        }else{
-            textField.sendKeys(textToEnter);
-            submitFormAndReturn();
-        }
-        textField = driver.findElement(TEXT_INPUT);
-        Assertions.assertEquals(textToEnter, textField.getDomProperty("value"));
-    }
-
-    @Test
-    void passwordFieldTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        String passToEnter = "MyPass123";
-        WebElement textField = driver.findElement(PASSWORD);
-        String defaultText = textField.getDomProperty("defaultValue");
-        if(!(defaultText.equals(""))){
-            textField.clear();
-        }else{
-            textField.sendKeys(passToEnter);
-            submitFormAndReturn();
-        }
-        textField = driver.findElement(PASSWORD);
-        Assertions.assertEquals(passToEnter, textField.getDomProperty("value"));
-    }
-
-    @Test
-    void textAreaTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        String passToEnter = "TextAreaCompleted";
-        WebElement textField = driver.findElement(TEXT_AREA);
-        String defaultText = textField.getDomProperty("defaultValue");
-        if(!(defaultText.equals(""))){
-            textField.clear();
-        }else{
-            textField.sendKeys(passToEnter);
-            submitFormAndReturn();
-        }
-        Assertions.assertEquals(passToEnter, textField.getDomProperty("value"));
-    }
-
-    @Test
-    void returnToHomePageTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        driver.findElement(RETURN_FROM_WEB_FORM).click();
-        Assertions.assertEquals("https://bonigarcia.dev/selenium-webdriver-java/index.html", driver.getCurrentUrl());
-    }
-
-    @Test
-    void disabledInputTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        Assertions.assertThrows(ElementNotInteractableException.class, ()-> driver.findElement(DISABLED_INPUT).sendKeys("AnyKey"));
-    }
-
-    @Test
-    void readOnlyInputTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        String currentText = driver.findElement(READONLY_INPUT).getDomProperty("value");
-        driver.findElement(READONLY_INPUT).sendKeys("AnyKey");
-        submitFormAndReturn();
-        String updatedText = driver.findElement(READONLY_INPUT).getDomProperty("value");
-        Assertions.assertEquals(currentText, updatedText);
-    }
-
-    @Test
-    void selectDropdownTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        Select select = new Select(driver.findElement(DROPDOWN_SELECT));
-        assertAll(
-                () -> assertEquals("Open this select menu", select.getFirstSelectedOption().getText()),
-                () -> {
-                    select.selectByIndex(1);
-                    assertEquals("One", select.getFirstSelectedOption().getText());
-                },
-                () -> {
-                    select.selectByValue("2");
-                    assertEquals("Two", select.getFirstSelectedOption().getText());
-                }
-        );
-    }
-
-    @Test
-    void dataListDropdownTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        WebElement datalist = driver.findElement(DROPDOWN_DATA_LIST);
-        datalist.sendKeys("New");
-        actions.sendKeys(datalist, Keys.ARROW_DOWN).perform();
-        actions.sendKeys(Keys.ENTER).perform();
-        submitFormAndReturn();
-        Assertions.assertEquals("New York", datalist.getDomProperty("value"));
-    }
-
-    @Test
-    void fileInputTest(){
-        boolean notImplemented = true;
-        Assertions.assertFalse(notImplemented, "Not implemented");
-    }
-
-    @Test
-    void checkedCheckBoxTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        WebElement box = driver.findElement(CHECKED_CHECKBOX);
-        Assertions.assertTrue(box.isSelected(), "Precondition should be true");
-        box.click();
-        Assertions.assertFalse(box.isSelected(), "Result should be false");
-    }
-
-    @Test
-    void uncheckedCheckBoxTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        WebElement box = driver.findElement(DEFAULT_CHECKBOX);
-        Assertions.assertFalse(box.isSelected(), "Precondition should be true");
-        box.click();
-        Assertions.assertTrue(box.isSelected(), "Result should be true");
-    }
-
-    @Test
-    void radioButtonTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        WebElement radioChecked = driver.findElement(CHECKED_RADIO);
-        WebElement radioUnchecked = driver.findElement(DEFAULT_RADIO);
-        Assertions.assertTrue(radioChecked.isSelected(), "Precondition should be true");
-        Assertions.assertFalse(radioUnchecked.isSelected(), "Precondition should be false");
-
-        radioUnchecked.click();
-
-        Assertions.assertFalse(radioChecked.isSelected(), "Result should be false");
-        Assertions.assertTrue(radioUnchecked.isSelected(), "Result should be true");
-    }
-
-    @Test
-    void colorPickerTest(){
-        boolean notImplemented = true;
-        Assertions.assertFalse(notImplemented, "Not implemented");
-    }
-
-    @Test
-    void exampleRageTest(){
-        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
-        WebElement range = driver.findElement(EXAMPLE_RANGE);
-        String startValue = range.getDomProperty("value");
-
-        actions.clickAndHold(driver.findElement(EXAMPLE_RANGE))
-                .moveByOffset(50, 0)
-                .release()
-                .perform();
-        String endValue = range.getDomProperty("value");
-        Assertions.assertTrue(Integer.parseInt(endValue) > Integer.parseInt(startValue));
-
-        actions.clickAndHold(driver.findElement(EXAMPLE_RANGE))
-                .moveByOffset(- 100, 0)
-                .release()
-                .perform();
-        endValue = range.getDomProperty("value");
-        Assertions.assertTrue(Integer.parseInt(endValue) < Integer.parseInt(startValue));
-
-    }
-
-    void submitFormAndReturn(){
-        driver.findElement(SUBMIT).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        driver.navigate().back();
-    }
+//    @Test
+//    void openWebFormPagePageTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        Assertions.assertTrue(correctPageIsOpened(HEADER_WEB_FORM, "Web form"));
+//    }
+//
+//    @Test
+//    void inputTextTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        String textToEnter = "MyCustomText";
+//        WebElement textField = driver.findElement(TEXT_INPUT);
+//        String defaultText = textField.getDomProperty("defaultValue");
+//        if(!(defaultText.equals(""))){
+//            textField.clear();
+//        }else{
+//            textField.sendKeys(textToEnter);
+//            submitFormAndReturn();
+//        }
+//        textField = driver.findElement(TEXT_INPUT);
+//        Assertions.assertEquals(textToEnter, textField.getDomProperty("value"));
+//    }
+//
+//    @Test
+//    void passwordFieldTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        String passToEnter = "MyPass123";
+//        WebElement textField = driver.findElement(PASSWORD);
+//        String defaultText = textField.getDomProperty("defaultValue");
+//        if(!(defaultText.equals(""))){
+//            textField.clear();
+//        }else{
+//            textField.sendKeys(passToEnter);
+//            submitFormAndReturn();
+//        }
+//        textField = driver.findElement(PASSWORD);
+//        Assertions.assertEquals(passToEnter, textField.getDomProperty("value"));
+//    }
+//
+//    @Test
+//    void textAreaTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        String passToEnter = "TextAreaCompleted";
+//        WebElement textField = driver.findElement(TEXT_AREA);
+//        String defaultText = textField.getDomProperty("defaultValue");
+//        if(!(defaultText.equals(""))){
+//            textField.clear();
+//        }else{
+//            textField.sendKeys(passToEnter);
+//            submitFormAndReturn();
+//        }
+//        Assertions.assertEquals(passToEnter, textField.getDomProperty("value"));
+//    }
+//
+//    @Test
+//    void returnToHomePageTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        driver.findElement(RETURN_FROM_WEB_FORM).click();
+//        Assertions.assertEquals("https://bonigarcia.dev/selenium-webdriver-java/index.html", driver.getCurrentUrl());
+//    }
+//
+//    @Test
+//    void disabledInputTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        Assertions.assertThrows(ElementNotInteractableException.class, ()-> driver.findElement(DISABLED_INPUT).sendKeys("AnyKey"));
+//    }
+//
+//    @Test
+//    void readOnlyInputTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        String currentText = driver.findElement(READONLY_INPUT).getDomProperty("value");
+//        driver.findElement(READONLY_INPUT).sendKeys("AnyKey");
+//        submitFormAndReturn();
+//        String updatedText = driver.findElement(READONLY_INPUT).getDomProperty("value");
+//        Assertions.assertEquals(currentText, updatedText);
+//    }
+//
+//    @Test
+//    void selectDropdownTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        Select select = new Select(driver.findElement(DROPDOWN_SELECT));
+//        assertAll(
+//                () -> assertEquals("Open this select menu", select.getFirstSelectedOption().getText()),
+//                () -> {
+//                    select.selectByIndex(1);
+//                    assertEquals("One", select.getFirstSelectedOption().getText());
+//                },
+//                () -> {
+//                    select.selectByValue("2");
+//                    assertEquals("Two", select.getFirstSelectedOption().getText());
+//                }
+//        );
+//    }
+//
+//    @Test
+//    void dataListDropdownTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        WebElement datalist = driver.findElement(DROPDOWN_DATA_LIST);
+//        datalist.sendKeys("New");
+//        actions.sendKeys(datalist, Keys.ARROW_DOWN).perform();
+//        actions.sendKeys(Keys.ENTER).perform();
+//        submitFormAndReturn();
+//        Assertions.assertEquals("New York", datalist.getDomProperty("value"));
+//    }
+//
+//    @Test
+//    void fileInputTest(){
+//        boolean notImplemented = true;
+//        Assertions.assertFalse(notImplemented, "Not implemented");
+//    }
+//
+//    @Test
+//    void checkedCheckBoxTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        WebElement box = driver.findElement(CHECKED_CHECKBOX);
+//        Assertions.assertTrue(box.isSelected(), "Precondition should be true");
+//        box.click();
+//        Assertions.assertFalse(box.isSelected(), "Result should be false");
+//    }
+//
+//    @Test
+//    void uncheckedCheckBoxTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        WebElement box = driver.findElement(DEFAULT_CHECKBOX);
+//        Assertions.assertFalse(box.isSelected(), "Precondition should be true");
+//        box.click();
+//        Assertions.assertTrue(box.isSelected(), "Result should be true");
+//    }
+//
+//    @Test
+//    void radioButtonTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        WebElement radioChecked = driver.findElement(CHECKED_RADIO);
+//        WebElement radioUnchecked = driver.findElement(DEFAULT_RADIO);
+//        Assertions.assertTrue(radioChecked.isSelected(), "Precondition should be true");
+//        Assertions.assertFalse(radioUnchecked.isSelected(), "Precondition should be false");
+//
+//        radioUnchecked.click();
+//
+//        Assertions.assertFalse(radioChecked.isSelected(), "Result should be false");
+//        Assertions.assertTrue(radioUnchecked.isSelected(), "Result should be true");
+//    }
+//
+//    @Test
+//    void colorPickerTest(){
+//        boolean notImplemented = true;
+//        Assertions.assertFalse(notImplemented, "Not implemented");
+//    }
+//
+//    @Test
+//    void exampleRageTest(){
+//        openPage("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+//        WebElement range = driver.findElement(EXAMPLE_RANGE);
+//        String startValue = range.getDomProperty("value");
+//
+//        actions.clickAndHold(driver.findElement(EXAMPLE_RANGE))
+//                .moveByOffset(50, 0)
+//                .release()
+//                .perform();
+//        String endValue = range.getDomProperty("value");
+//        Assertions.assertTrue(Integer.parseInt(endValue) > Integer.parseInt(startValue));
+//
+//        actions.clickAndHold(driver.findElement(EXAMPLE_RANGE))
+//                .moveByOffset(- 100, 0)
+//                .release()
+//                .perform();
+//        endValue = range.getDomProperty("value");
+//        Assertions.assertTrue(Integer.parseInt(endValue) < Integer.parseInt(startValue));
+//
+//    }
+//
+//    void submitFormAndReturn(){
+//        driver.findElement(SUBMIT).click();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        driver.navigate().back();
+//    }
 
 }
