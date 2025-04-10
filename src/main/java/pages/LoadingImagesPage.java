@@ -1,17 +1,16 @@
-package homework_7;
+package pages;
 
-import helpers.WaitHelper;
+import core.helpers.WaitHelper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoadingImages {
+public class LoadingImagesPage {
 
     private static final By COMPASS = By.xpath("//img[@id='compass']");
     private static final By CALENDAR = By.xpath("//img[@id='calendar']");

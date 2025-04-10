@@ -1,4 +1,4 @@
-package homework_7;
+package pages;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +11,7 @@ import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
 
-public class Storage {
+public class StoragePage {
 
     private static final String PAGE_URL = "https://bonigarcia.dev/selenium-webdriver-java/web-storage.html";
     private static WebDriver driver;

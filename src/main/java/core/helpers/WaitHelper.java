@@ -1,4 +1,4 @@
-package helpers;
+package core.helpers;
 
 import configs.Configs;
 import org.aeonbits.owner.ConfigFactory;

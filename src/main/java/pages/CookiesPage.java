@@ -1,4 +1,4 @@
-package homework_7;
+package pages;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Cookies {
+public class CookiesPage {
 
     private static final By REFRESH_COOKIE = By.xpath("//button[@id=\"refresh-cookies\"]");
     private static final By COOKIE_LIST = By.xpath("//p[@id=\"cookies-list\"]");

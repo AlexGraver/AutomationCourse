@@ -1,10 +1,10 @@
-package homework_7;
+package pages;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ShadowDOM {
+public class ShadowDOMPage {
 
     private static final String PAGE_URL = "https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html";
     private static final By CONTENT = By.cssSelector("#content");

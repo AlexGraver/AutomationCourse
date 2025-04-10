@@ -1,6 +1,6 @@
-package homework_7;
+package pages;
 
-import helpers.WaitHelper;
+import core.helpers.WaitHelper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class InfiniteScroll {
+public class InfiniteScrollPage {
 
     private static final By PARAGRAPH = By.xpath("//p[@class=\"lead\"]");
     private static WebDriver driver;

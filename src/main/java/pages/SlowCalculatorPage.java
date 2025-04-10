@@ -1,6 +1,6 @@
-package homework_7;
+package pages;
 
-import helpers.WaitHelper;
+import core.helpers.WaitHelper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +10,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SlowCalculator {
+public class SlowCalculatorPage {
 
 
     private static final By LOADER = By.xpath("//span[@class=\"spinner-border\"]");

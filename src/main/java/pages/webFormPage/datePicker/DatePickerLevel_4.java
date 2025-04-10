@@ -1,4 +1,4 @@
-package datePicker;
+package pages.webFormPage.datePicker;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
