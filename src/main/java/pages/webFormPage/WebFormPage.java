@@ -1,12 +1,14 @@
 package pages.webFormPage;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import core.BasePage;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
-public class WebFormPage {
+public class WebFormPage extends BasePage {
+
+    public WebFormPage(WebDriver driver){
+        super(driver);
+    }
 
     private static final By HEADER_WEB_FORM = By.xpath("//h1[@class=\"display-6\"]");
     private static final By PAGE_NAME = By.xpath("//h1[@class=\"display-6\"]");

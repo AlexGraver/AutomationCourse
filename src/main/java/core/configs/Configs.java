@@ -1,13 +1,16 @@
-package configs;
+package core.configs;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:timeout.properties",
-        "classpath:sycretKey.properties"
+        "classpath:default.properties",
+        "classpath:${env}.properties"
 })
 
 
 public interface Configs extends Config{
+
+    @Key("system.browser")
+    String browser();
 
     @Key("explicit.wait")
     int explicitWait();

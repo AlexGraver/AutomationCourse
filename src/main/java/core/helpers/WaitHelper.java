@@ -1,6 +1,6 @@
 package core.helpers;
 
-import configs.Configs;
+import core.configs.Configs;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;

@@ -29,9 +29,7 @@ public class ElementInteractions {
         }
     }
 
-    static void openPage(String url){
-        driver.get(url);
-    }
+
 
 
 
