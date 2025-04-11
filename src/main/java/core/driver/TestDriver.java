@@ -17,12 +17,9 @@ public class TestDriver {
 
     public static WebDriver getDriver() {
         if(driver == null){
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--disable-search-engine-choice-screen");
-
             switch (configs.browser()) {
                 case "win_chrome":
-                    driver = new ChromeDriver(options);
+                    driver = new ChromeDriver();
                     break;
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + configs.browser());

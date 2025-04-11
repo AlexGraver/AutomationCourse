@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WaitHelper {
 
@@ -59,7 +61,23 @@ public class WaitHelper {
         wait.until(ExpectedConditions.alertIsPresent());
     }
 
+    public List<WebElement> findElements(By by) {
+        List<WebElement> list;
+        try {
+            list = fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        } catch (TimeoutException e) {
+            list = new ArrayList<>();
+        }
+        return list;
+    }
 
+    public void sleep(int milliseconds){
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }
