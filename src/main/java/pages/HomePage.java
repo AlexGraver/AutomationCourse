@@ -20,19 +20,19 @@ public class HomePage extends BasePage {
     private final By HEADER = By.xpath("//h1[contains (@class, \"display-6\")]");
 
     public WebFormPage openWebFormTab() {
-        findElement(By.xpath(getElementXpathByOrder(1)));
+        findElement(By.xpath(getElementXpathByOrder(1))).click();
         return new WebFormPage(driver);
     }
 
     public NavigationPage openNavigationTab() {
-        findElement(By.xpath(getElementXpathByOrder(2)));
+        findElement(By.xpath(getElementXpathByOrder(2))).click();
         return new NavigationPage(driver);
     }
 
-//    public DropdownMenuPage openDropdownMenuTab() {
-//        findElement(By.xpath(getElementXpathByOrder(3)));
-//        return new DropdownMenuPage(driver);
-//    }
+    public DropdownMenuPage openDropdownMenuTab() {
+        findElement(By.xpath(getElementXpathByOrder(3))).click();
+        return new DropdownMenuPage(driver);
+    }
 //
 //    public MouseOverPage openMouseOverTab() {
 //        findElement(By.xpath(getElementXpathByOrder(4)));
@@ -40,7 +40,7 @@ public class HomePage extends BasePage {
 //    }
 //
     public DragAndDropPage openDragAndDropTab() {
-        findElement(By.xpath(getElementXpathByOrder(5)));
+        findElement(By.xpath(getElementXpathByOrder(5))).click();
         return new DragAndDropPage(driver);
     }
 //

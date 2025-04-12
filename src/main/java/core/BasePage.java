@@ -26,27 +26,27 @@ public class BasePage {
         action = new Actions(driver);
     }
 
-    public static void openPage(String url){
+    protected static void openPage(String url){
         driver.get(url);
     }
 
-    public String getCurrentUrl(){
+    protected String getCurrentUrl(){
         return driver.getCurrentUrl();
     }
 
-    public void navigateBack(){
+    protected void navigateBack(){
         driver.navigate().back();
     }
 
-    public void sleep(int milliseconds){
+    protected void sleep(int milliseconds){
         waitHelper.sleep(milliseconds);
     }
 
-    public String getDomProperty(By locator, String property){
+    protected String getDomProperty(By locator, String property){
         return driver.findElement(locator).getDomProperty(property);
     }
 
-    public void setTextInToElement(By locator, String text){
+    protected void setTextInToElement(By locator, String text){
         WebElement textField = findElement(locator);
         String defaultText = textField.getDomProperty("defaultValue");
         if(!(defaultText.equals(""))){
@@ -56,7 +56,7 @@ public class BasePage {
         }
     }
 
-    public void mouseClickAndMove(By locator, int horizont, int vertical){
+    protected void mouseClickAndMove(By locator, int horizont, int vertical){
         action.clickAndHold(findElement(locator))
                 .moveByOffset(horizont, vertical)
                 .release()
@@ -67,36 +67,48 @@ public class BasePage {
         action.sendKeys(key).perform();
     }
 
-    public WebElement findElement(By locator){
+    protected WebElement findElement(By locator){
         return waitUntilElementIsPresentInDOM(locator);
     }
 
-    public List<WebElement> findElements(By by) {
+    protected List<WebElement> findElements(By by) {
         return waitHelper.findElements(by);
     }
 
-    public WebElement waitUntilElementIsPresentInDOM(By locator){
+    protected WebElement waitUntilElementIsPresentInDOM(By locator){
         return waitHelper.waitUntilElementIsPresentInDOM(locator);
     }
 
-    public WebElement waitUntilElementClickable(By locator){
+    protected WebElement waitUntilElementClickable(By locator){
         return waitHelper.waitUntilElementClickable(locator);
     }
 
-    public WebElement waitUntilElementDisplayed(By locator){
+    protected WebElement waitUntilElementDisplayed(By locator){
         return waitHelper.waitUntilElementDisplayed(locator);
     }
 
-    public void waitUntilElementNotDisplayed(By locator){
+    protected void waitUntilElementNotDisplayed(By locator){
         waitHelper.waitUntilElementNotDisplayed(locator);
     }
 
-    public void waitUntilAlertIsPresent(){
+    protected void waitUntilAlertIsPresent(){
         waitHelper.waitUntilAlertIsPresent();
     }
 
     public void dragAndDrop(WebElement draggable, WebElement target){
         action.dragAndDrop(draggable, target).perform();
+    }
+
+    protected void mouseLeftClick(By locator){
+        action.click(findElement(locator)).perform();
+    }
+
+    protected void mouseRightClick(By locator){
+        action.contextClick(findElement(locator));
+    }
+
+    protected void mouseDoubleClick(By locator){
+        action.doubleClick(findElement(locator)).perform();
     }
 
 
