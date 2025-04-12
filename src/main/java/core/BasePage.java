@@ -26,7 +26,7 @@ public class BasePage {
         action = new Actions(driver);
     }
 
-    protected static void openPage(String url){
+    public static void openPage(String url){
         driver.get(url);
     }
 
@@ -109,6 +109,11 @@ public class BasePage {
 
     protected void mouseDoubleClick(By locator){
         action.doubleClick(findElement(locator)).perform();
+    }
+
+    public void scrollToPageFooter(){
+        jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        sleep(1000);
     }
 
 

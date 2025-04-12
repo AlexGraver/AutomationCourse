@@ -35,7 +35,7 @@ public class HomePage extends BasePage {
     }
 //
 //    public MouseOverPage openMouseOverTab() {
-//        findElement(By.xpath(getElementXpathByOrder(4)));
+//        findElement(By.xpath(getElementXpathByOrder(4))).click();
 //        return new MouseOverPage(driver);
 //    }
 //
@@ -45,117 +45,114 @@ public class HomePage extends BasePage {
     }
 //
 //    public DrawInCanvasPage openDrawInCanvasTab() {
-//        findElement(By.xpath(getElementXpathByOrder(6)));
+//        findElement(By.xpath(getElementXpathByOrder(6))).click();
 //        return new DrawInCanvasPage(driver);
 //    }
 //
-//    public LoadingImagesPage openLoadingImagesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(7)));
-//        return new LoadingImagesPage(driver);
-//    }
-//
-//    public SlowCalculatorPage openSlowCalculatorTab() {
-//        findElement(By.xpath(getElementXpathByOrder(8)));
-//        return new SlowCalculatorPage(driver);
-//    }
-//
+    public LoadingImagesPage openLoadingImagesTab() {
+        findElement(By.xpath(getElementXpathByOrder(7))).click();
+        return new LoadingImagesPage(driver);
+    }
+
+    public SlowCalculatorPage openSlowCalculatorTab() {
+        findElement(By.xpath(getElementXpathByOrder(8))).click();
+        return new SlowCalculatorPage(driver);
+    }
+
 //    public LongPage openLongPageTab() {
-//        findElement(By.xpath(getElementXpathByOrder(9)));
+//        findElement(By.xpath(getElementXpathByOrder(9))).click();
 //        return new LongPage(driver);
 //    }
 //
-//    public InfiniteScrollPage openInfiniteScrollTab() {
-//        findElement(By.xpath(getElementXpathByOrder(10)));
-//        return new InfiniteScrollPage(driver);
-//    }
-//
-//    public ShadowDomPage openShadowDomTab() {
-//        findElement(By.xpath(getElementXpathByOrder(11)));
-//        return new ShadowDomPage(driver);
-//    }
-//
-//    public CookiesPage openCookiesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(12)));
-//        return new CookiesPage(driver);
-//    }
+    public InfiniteScrollPage openInfiniteScrollTab() {
+        findElement(By.xpath(getElementXpathByOrder(10))).click();
+        return new InfiniteScrollPage(driver);
+    }
+
+    public ShadowDOMPage openShadowDomTab() {
+        findElement(By.xpath(getElementXpathByOrder(11))).click();
+        return new ShadowDOMPage(driver);
+    }
+
+    public CookiesPage openCookiesTab() {
+        findElement(By.xpath(getElementXpathByOrder(12))).click();
+        return new CookiesPage(driver);
+    }
 //
 //    public FramesPage openFramesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(13)));
+//        findElement(By.xpath(getElementXpathByOrder(13))).click();
 //        return new FramesPage(driver);
 //    }
 //
 //    public IframesPage openIframesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(14)));
+//        findElement(By.xpath(getElementXpathByOrder(14))).click();
 //        return new IframesPage(driver);
 //    }
 //
     public DialogBoxesPage openDialogBoxesTab() {
-        findElement(By.xpath(getElementXpathByOrder(15)));
+        findElement(By.xpath(getElementXpathByOrder(15))).click();
         return new DialogBoxesPage(driver);
     }
-//
-//    public WebStoragePage openWebStorageTab() {
-//        findElement(By.xpath(getElementXpathByOrder(16)));
-//        return new WebStoragePage(driver);
-//    }
+
+    public StoragePage openWebStorageTab() {
+        findElement(By.xpath(getElementXpathByOrder(16))).click();
+        return new StoragePage(driver);
+    }
 //
 //    public GeolocationPage openGeolocationTab() {
-//        findElement(By.xpath(getElementXpathByOrder(17)));
+//        findElement(By.xpath(getElementXpathByOrder(17))).click();
 //        return new GeolocationPage(driver);
 //    }
 //
 //    public NotificationsPage openNotificationsTab() {
-//        findElement(By.xpath(getElementXpathByOrder(18)));
+//        findElement(By.xpath(getElementXpathByOrder(18))).click();
 //        return new NotificationsPage(driver);
 //    }
 //
 //    public GetUserMediaPage openGetUserMediaTab() {
-//        findElement(By.xpath(getElementXpathByOrder(19)));
+//        findElement(By.xpath(getElementXpathByOrder(19))).click();
 //        return new GetUserMediaPage(driver);
 //    }
 //
 //    public MultilanguagePage openMultilanguagePageTab() {
-//        findElement(By.xpath(getElementXpathByOrder(20)));
+//        findElement(By.xpath(getElementXpathByOrder(20))).click();
 //        return new MultilanguagePage(driver);
 //    }
 //
 //    public ConsoleLogsPage openConsoleLogsTab() {
-//        findElement(By.xpath(getElementXpathByOrder(21)));
+//        findElement(By.xpath(getElementXpathByOrder(21))).click();
 //        return new ConsoleLogsPage(driver);
 //    }
 //
 //    public LoginFormPage openLoginFormTab() {
-//        findElement(By.xpath(getElementXpathByOrder(22)));
+//        findElement(By.xpath(getElementXpathByOrder(22))).click();
 //        return new LoginFormPage(driver);
 //    }
 //
 //    public SlowLoginFormPage openSlowLoginFormTab() {
-//        findElement(By.xpath(getElementXpathByOrder(23)));
+//        findElement(By.xpath(getElementXpathByOrder(23))).click();
 //        return new SlowLoginFormPage(driver);
 //    }
 //
 //    public RandomCalculatorPage openRandomCalculatorTab() {
-//        findElement(By.xpath(getElementXpathByOrder(24)));
+//        findElement(By.xpath(getElementXpathByOrder(24))).click();
 //        return new RandomCalculatorPage(driver);
 //    }
 //
 //    public DownloadFilesPage openDownloadFilesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(25)));
+//        findElement(By.xpath(getElementXpathByOrder(25))).click();
 //        return new DownloadFilesPage(driver);
 //    }
 //
 //    public AbTestingPage openAbTestingTab() {
-//        findElement(By.xpath(getElementXpathByOrder(26)));
+//        findElement(By.xpath(getElementXpathByOrder(26))).click();
 //        return new AbTestingPage(driver);
 //    }
 //
 //    public DataTypesPage openDataTypesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(27)));
+//        findElement(By.xpath(getElementXpathByOrder(27))).click();
 //        return new DataTypesPage(driver);
 //    }
-
-
-
 
 
 
