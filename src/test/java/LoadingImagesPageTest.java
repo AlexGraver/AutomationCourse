@@ -1,14 +1,14 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.LoadingImagesPage;
 
 public class LoadingImagesPageTest extends BaseTest{
 
-    LoadingImagesPage loadingImagesPage;
+    static LoadingImagesPage loadingImagesPage;
 
-    @BeforeEach
-    void setUp(){
+    @BeforeAll
+    static void setUp(){
         loadingImagesPage = initUiTest().openLoadingImagesTab();
     }
 

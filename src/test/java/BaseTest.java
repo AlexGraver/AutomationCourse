@@ -7,9 +7,9 @@ import static core.BasePage.openPage;
 
 public class BaseTest {
 
-    private Configs configs = ConfigFactory.create(Configs.class);
+    private static Configs configs = ConfigFactory.create(Configs.class);
 
-    public HomePage initUiTest(){
+    static public HomePage initUiTest(){
         openPage(configs.baseUrl());
         return new HomePage(TestDriver.getDriver());
     }

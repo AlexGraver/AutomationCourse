@@ -23,6 +23,7 @@ public class WaitHelper {
         this.driver = driver;
         initImplicitWait(configs.implicitWait());
         initWebDriverWait(configs.explicitWait());
+        fluentWait = getFluentWait();
     }
 
     private void initImplicitWait(int millisec){

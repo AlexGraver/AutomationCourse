@@ -15,7 +15,7 @@ public class BasePage {
     public Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private WaitHelper waitHelper;
     private JavascriptExecutor jsExecutor;
-    private Actions action;
+    private Actions actions;
     protected static WebDriver driver = TestDriver.getDriver();
     Select select;
 
@@ -23,7 +23,7 @@ public class BasePage {
         this.driver = driver;
         waitHelper = new WaitHelper(driver);
         jsExecutor = (JavascriptExecutor) driver;
-        action = new Actions(driver);
+        actions = new Actions(driver);
     }
 
     public static void openPage(String url){
@@ -57,14 +57,14 @@ public class BasePage {
     }
 
     protected void mouseClickAndMove(By locator, int horizont, int vertical){
-        action.clickAndHold(findElement(locator))
+        actions.clickAndHold(findElement(locator))
                 .moveByOffset(horizont, vertical)
                 .release()
                 .perform();
     }
 
     public void clickKeyBoardButton(Keys key){
-        action.sendKeys(key).perform();
+        actions.sendKeys(key).perform();
     }
 
     protected WebElement findElement(By locator){
@@ -96,19 +96,19 @@ public class BasePage {
     }
 
     public void dragAndDrop(WebElement draggable, WebElement target){
-        action.dragAndDrop(draggable, target).perform();
+        actions.dragAndDrop(draggable, target).perform();
     }
 
     protected void mouseLeftClick(By locator){
-        action.click(findElement(locator)).perform();
+        actions.click(findElement(locator)).perform();
     }
 
     protected void mouseRightClick(By locator){
-        action.contextClick(findElement(locator));
+        actions.contextClick(findElement(locator)).perform();
     }
 
     protected void mouseDoubleClick(By locator){
-        action.doubleClick(findElement(locator)).perform();
+        actions.doubleClick(findElement(locator)).perform();
     }
 
     public void scrollToPageFooter(){

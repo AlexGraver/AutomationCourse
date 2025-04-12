@@ -51,7 +51,7 @@ public class NavigationPage extends BasePage {
     }
 
     public boolean buttonIsEnabled(By element){
-        WebElement parent = driver.findElement(element).findElement(By.xpath(".."));
+        WebElement parent = findElement(element).findElement(By.xpath(".."));
         if(parent.getDomProperty("className").contains("disabled")){
             return false;
         }else{

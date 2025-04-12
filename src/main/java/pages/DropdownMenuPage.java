@@ -46,7 +46,8 @@ public class DropdownMenuPage extends BasePage {
     }
 
     public void openDoubleMenu(){
-        mouseDoubleClick(DOUBLE_CLICK_CONTEXT_MENU);
+        findElement(DOUBLE_CLICK_MENU);
+        mouseDoubleClick(DOUBLE_CLICK_MENU);
     }
 
     public boolean doubleMenuIsExpanded(){
