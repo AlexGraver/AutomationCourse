@@ -1,7 +1,6 @@
 package pages;
 
 import core.BasePage;
-import core.helpers.WaitHelper;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +10,6 @@ public class DialogBoxesPage extends BasePage {
     public DialogBoxesPage(WebDriver driver){
         super(driver);
     }
-
-    private static WebDriver driver;
-    private static WaitHelper waitHelper;
 
     private static final By ALERT = By.xpath("//button[@id=\"my-alert\"]");
     private static final By CONFIRM = By.xpath("//button[@id=\"my-confirm\"]");
@@ -47,8 +43,8 @@ public class DialogBoxesPage extends BasePage {
     }
 
     public String openModalAndGetContent(){
-        findElement(MODAL).click();
-        return findElement(MODAL_CONTENT).getText();
+        waitUntilElementClickable(MODAL).click();
+        return waitUntilElementDisplayed(MODAL_CONTENT).getText();
     }
 
     public void saveModalContent(){
