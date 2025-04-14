@@ -78,10 +78,10 @@ public class DeliveryPriceCalculator {
             case HIGH:
                 coefficient = DeliveryLoad.HIGH.getCoefficient();
                 break;
-            case DeliveryLoad.MODERATE:
+            case MODERATE:
                 coefficient = DeliveryLoad.MODERATE.getCoefficient();
                 break;
-            case DeliveryLoad.NORMAL:
+            case NORMAL:
                 coefficient = DeliveryLoad.NORMAL.getCoefficient();
                 break;
         }

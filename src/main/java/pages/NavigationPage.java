@@ -1,6 +1,7 @@
 package pages;
 
 import core.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class NavigationPage extends BasePage {
         super(driver);
     }
 
+    @Step("Click to 'next' button")
     public void clickNext(){
         if(buttonIsEnabled(PAGINATION_NEXT)){
             findElement(PAGINATION_NEXT).click();
@@ -30,6 +32,7 @@ public class NavigationPage extends BasePage {
         }
     }
 
+    @Step("Click to 'previous' button")
     public void clickPrevious(){
         if(buttonIsEnabled(PAGINATION_PREVIOUS)){
             findElement(PAGINATION_PREVIOUS).click();
@@ -38,7 +41,7 @@ public class NavigationPage extends BasePage {
         }
     }
 
-
+    @Step("Active page is = {elementNumber}")
     public int checkActivePage(){
         List<WebElement> pagination_elements = findElements(PAGINATION_ABSTRACT_ELEMENT);
         int elementNumber = -1;
@@ -50,6 +53,7 @@ public class NavigationPage extends BasePage {
         return elementNumber;
     }
 
+    @Step
     public boolean buttonIsEnabled(By element){
         WebElement parent = findElement(element).findElement(By.xpath(".."));
         if(parent.getDomProperty("className").contains("disabled")){
@@ -59,11 +63,13 @@ public class NavigationPage extends BasePage {
         }
     }
 
+    @Step
     public HomePage goToHomePage(){
         findElement(BACK_TO_INDEX).click();
         return new HomePage(driver);
     }
 
+    @Step
     public boolean pageIsOpened(){
         String actual = findElement(HEADER_NAVIGATION).getText();
         if(actual.equals("Navigation example")){

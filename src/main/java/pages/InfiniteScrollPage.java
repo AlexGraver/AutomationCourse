@@ -1,7 +1,6 @@
 package pages;
 
 import core.BasePage;
-import core.helpers.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
