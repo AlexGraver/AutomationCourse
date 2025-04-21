@@ -21,8 +21,8 @@ public class NavigationPageTest extends BaseTest{
     }
 
     @Test
+    @DisplayName("Pagination test")
     void paginationNavigationTest(){
-
         int activePageBeforeNext = navigationPage.checkActivePage();
         navigationPage.clickNext();
         int activePageAfterNext = navigationPage.checkActivePage();
@@ -35,6 +35,7 @@ public class NavigationPageTest extends BaseTest{
     }
 
     @Test
+    @DisplayName("Check go to Home page Test")
     void goToHomePageTest(){
         navigationPage.goToHomePage();
         Assertions.assertEquals("https://bonigarcia.dev/selenium-webdriver-java/index.html", TestDriver.getDriver().getCurrentUrl());
