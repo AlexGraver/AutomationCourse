@@ -20,6 +20,8 @@ dependencies {
     //JUnit dependencies
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    //to use in main module
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
 
     //Allure
     implementation 'org.seleniumhq.selenium:selenium-java:4.31.0'

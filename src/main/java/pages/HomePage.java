@@ -54,6 +54,11 @@ public class HomePage extends BasePage {
         return new LoadingImagesPage(driver);
     }
 
+    public LoadingImagesFluentPage openLoadingImagesFluentTab() {
+        findElement(By.xpath(getElementXpathByOrder(7))).click();
+        return new LoadingImagesFluentPage(driver);
+    }
+
     public SlowCalculatorPage openSlowCalculatorTab() {
         findElement(By.xpath(getElementXpathByOrder(8))).click();
         return new SlowCalculatorPage(driver);
