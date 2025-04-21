@@ -3,8 +3,8 @@ package core.driver;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import core.configs.Configs;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.time.Duration;
 
@@ -20,6 +20,9 @@ public class TestDriver {
             switch (configs.browser()) {
                 case "win_chrome":
                     driver = new ChromeDriver();
+                    break;
+                case "win_edge":
+                    driver = new EdgeDriver();
                     break;
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + configs.browser());
