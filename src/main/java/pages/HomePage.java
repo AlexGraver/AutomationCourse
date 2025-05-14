@@ -144,10 +144,10 @@ public class HomePage extends BasePage {
 //        return new RandomCalculatorPage(driver);
 //    }
 //
-//    public DownloadFilesPage openDownloadFilesTab() {
-//        findElement(By.xpath(getElementXpathByOrder(25))).click();
-//        return new DownloadFilesPage(driver);
-//    }
+    public DownloadFilesPage openDownloadFilesTab() {
+        findElement(By.xpath(getElementXpathByOrder(25))).click();
+        return new DownloadFilesPage(driver);
+    }
 //
 //    public AbTestingPage openAbTestingTab() {
 //        findElement(By.xpath(getElementXpathByOrder(26))).click();
