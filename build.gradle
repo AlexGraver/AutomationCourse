@@ -41,6 +41,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
 }
 
 test {
