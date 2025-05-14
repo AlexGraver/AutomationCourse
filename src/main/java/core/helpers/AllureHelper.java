@@ -4,9 +4,11 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -56,11 +58,16 @@ public class AllureHelper {
     @Step("Download file: {destination}")
     public void download(String link, File destination) throws IOException {
         try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-            HttpUriRequestBase request = new HttpGet(link);
-            client.execute(request, (HttpClientResponseHandler<byte[]>) response -> {
-                InputStream inputStream = response.getEntity().getContent();
-                //FileUtils.copyInputStreamToFile(inputStream, destination);
-                Allure.addAttachment(destination.getName(), inputStream);
+            HttpGet request = new HttpGet(link);
+            client.execute(request, response -> {
+                try (InputStream inputStream = response.getEntity().getContent()) {
+                    //Save file to disk
+                    FileUtils.copyInputStreamToFile(inputStream, destination);
+                }
+                // Read file again for adding to Allure
+                try (InputStream fileInputStream = new FileInputStream(destination)) {
+                    Allure.addAttachment(destination.getName(), fileInputStream);
+                }
                 return null;
             });
         }
