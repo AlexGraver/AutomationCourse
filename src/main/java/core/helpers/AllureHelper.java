@@ -1,6 +1,7 @@
 package core.helpers;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 
 import java.io.File;
@@ -14,14 +15,17 @@ import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 public class AllureHelper {
 
-//    @Attachment(value = "Screenshot", type = "image/png")
-//    @Step("Capture screenshot")
-//    public byte[] captureScreenshot(WebDriver driver) {
-//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//    }
+    @Attachment(value = "Screenshot", type = "image/png")
+    @Step("Capture screenshot")
+    public byte[] captureScreenshot(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 //
 //    @Attachment(value = "Screenshot", type = "image/png")
 //    @Step("Capture screenshot with Selenide")
