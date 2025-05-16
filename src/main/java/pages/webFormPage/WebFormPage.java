@@ -5,6 +5,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import pages.HomePage;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
 public class WebFormPage extends BasePage {
 
     public WebFormPage(WebDriver driver){
@@ -29,6 +37,7 @@ public class WebFormPage extends BasePage {
     private static final By COLOR_PICKER = By.xpath("//input[@name=\"my-colors\"]");
     private static final By EXAMPLE_RANGE = By.xpath("//input[@name=\"my-range\"]");
     private static final By RETURN_FROM_WEB_FORM = By.xpath("//a[@href=\"./index.html\"]");
+    private static final By UPLOAD_FILE = By.xpath("//input[@name = \"my-file\"]");
 
     public void submitFormAndReturn(){
         findElement(SUBMIT).click();
@@ -36,13 +45,30 @@ public class WebFormPage extends BasePage {
         navigateBack();
     }
 
+    public void submitForm(){
+        findElement(SUBMIT).click();
+        sleep(1000);
+    }
+
+    public void uploadFile(String filePath) throws IOException {
+        List<String> pathParts =  Arrays.asList(filePath.split("/"));
+        String fileName = pathParts.get(pathParts.size() -1);
+        URL url = WebFormPage.class.getClassLoader().getResource(fileName);
+        String absolutePath;
+        if (url != null) {
+            absolutePath = new File(url.getPath()).getAbsolutePath();
+            System.out.println("Absolute file path: " + absolutePath);
+        } else {
+            System.out.println("Resource not found");
+        }
+        String content = new String(Files.readAllBytes(Paths.get(filePath)));
+        System.out.println("File content: " + content);
+        findElement(UPLOAD_FILE).sendKeys(new File(filePath).getAbsolutePath());
+    }
+
     public boolean pageIsOpened(){
         String actual = findElement(HEADER_WEB_FORM).getText();
-        if(actual.equals("Web form")){
-            return true;
-        }else{
-            return false;
-        }
+        return actual.equals("Web form");
     }
 
     public void fillInputTextField(String text){

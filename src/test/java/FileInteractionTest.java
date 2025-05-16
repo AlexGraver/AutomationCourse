@@ -1,16 +1,18 @@
-import core.helpers.AllureHelper;
+import core.driver.TestDriver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.DownloadFilesPage;
+import pages.webFormPage.WebFormPage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+
 
 public class FileInteractionTest extends BaseTest{
 
     @Test
     void downloadFile() throws IOException {
-        AllureHelper allureHelper = new AllureHelper();
         DownloadFilesPage downloadFilesPage = initUiTest().openDownloadFilesTab();
 
         File pngDriverLogo = downloadFilesPage.downloadDriverLogo();
@@ -24,5 +26,17 @@ public class FileInteractionTest extends BaseTest{
                 ()-> Assertions.assertTrue(pngSeleniumLogo.exists(), "File not found/exist: " + pngSeleniumLogo.getName()),
                 ()-> Assertions.assertTrue(pdfSeleniumDoc.exists(), "File not found/exist: " + pdfSeleniumDoc.getName())
         );
+    }
+
+    @Test
+    void uploadFileTest() throws IOException {
+        String filePath = "src/main/resources/driver_logo_for_upload.png";
+
+        WebFormPage webFormPage = initUiTest().openWebFormTab();
+        webFormPage.uploadFile(filePath);
+        webFormPage.submitForm();
+
+        Assertions.assertTrue(Objects.requireNonNull(TestDriver.getDriver().getCurrentUrl())
+                .contains("driver_logo_for_upload.png"), "File not uploaded");
     }
 }
