@@ -1,6 +1,5 @@
 package core;
 
-import core.driver.TestDriver;
 import core.helpers.WaitHelper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +15,7 @@ public class BasePage {
     private WaitHelper waitHelper;
     private JavascriptExecutor jsExecutor;
     private Actions actions;
-    protected static WebDriver driver = TestDriver.getDriver();
+    protected static WebDriver driver;
     Select select;
 
     public BasePage(WebDriver driver) {

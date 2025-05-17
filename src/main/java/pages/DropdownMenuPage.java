@@ -1,66 +1,56 @@
 package pages;
 
-import core.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 
-public class DropdownMenuPage extends BasePage {
+import java.util.Objects;
 
-    public DropdownMenuPage(WebDriver driver){
-        super(driver);
-    }
-    private static final By HEADER_DROPDOWN = By.xpath("//h1[@class=\"display-6\"]");
-    private static final By LEFT_CLICK_MENU = By.xpath("//button[@id=\"my-dropdown-1\"]");
-    private static final By RIGHT_CLICK_MENU = By.xpath("//button[@id=\"my-dropdown-2\"]");
-    private static final By RIGHT_CLICK_CONTEXT_MENU = By.xpath("//ul[@id=\"context-menu-2\"]");
-    private static final By DOUBLE_CLICK_MENU = By.xpath("//button[@id=\"my-dropdown-3\"]");
-    private static final By DOUBLE_CLICK_CONTEXT_MENU = By.xpath("//ul[@id=\"context-menu-3\"]");
+public class DropdownMenuPage {
+
+    private static final String LEFT_CLICK_MENU = "//button[@id=\"my-dropdown-1\"]";
+    private static final String RIGHT_CLICK_MENU = "//button[@id=\"my-dropdown-2\"]";
+    private static final String DOUBLE_CLICK_MENU = "//button[@id=\"my-dropdown-3\"]";
+    private static final String RIGHT_CLICK_CONTEXT_MENU = "//ul[@id=\"context-menu-2\"]";
+    private static final String DOUBLE_CLICK_CONTEXT_MENU = "//ul[@id=\"context-menu-3\"]";
 
     public void openLeftMenu(){
-        findElement(LEFT_CLICK_MENU);
-        mouseLeftClick(LEFT_CLICK_MENU);
+        Selenide.$x(LEFT_CLICK_MENU).click();
     }
 
     public boolean leftMenuIsExpanded(){
-        return findElement(LEFT_CLICK_MENU)
-                .getDomProperty("ariaExpanded")
+        return Objects.requireNonNull(Selenide.$x(LEFT_CLICK_MENU)
+                        .shouldBe(Condition.visible)
+                        .getDomProperty("ariaExpanded"))
                 .equalsIgnoreCase("true");
     }
 
     public void openRightMenu(){
-        findElement(RIGHT_CLICK_MENU);
-        mouseRightClick(RIGHT_CLICK_MENU);
+        Selenide.$x(RIGHT_CLICK_MENU).contextClick();
     }
 
     public boolean rightMenuIsExpanded(){
-        boolean isExpanded = false;
-        String style = findElement(RIGHT_CLICK_CONTEXT_MENU)
+        String style = Selenide.$x(RIGHT_CLICK_CONTEXT_MENU)
+                .shouldBe(Condition.visible)
                 .getDomProperty("style");
-
-        if(style.equalsIgnoreCase("[]")){
-            isExpanded = false;
-        }else if(style.equalsIgnoreCase("[display]")){
-            isExpanded = true;
+        if(style.equalsIgnoreCase("[display]")){
+            return true;
+        }else{
+            return false;
         }
-        return isExpanded;
     }
 
     public void openDoubleMenu(){
-        findElement(DOUBLE_CLICK_MENU);
-        mouseDoubleClick(DOUBLE_CLICK_MENU);
+        Selenide.$x(DOUBLE_CLICK_MENU).doubleClick();
     }
 
     public boolean doubleMenuIsExpanded(){
-        boolean isExpanded = false;
-        String style = findElement(DOUBLE_CLICK_CONTEXT_MENU)
+        String style = Selenide.$x(DOUBLE_CLICK_CONTEXT_MENU)
                 .getDomProperty("style");
-
-        if(style.equalsIgnoreCase("[]")){
-            isExpanded = false;
-        }else if(style.equalsIgnoreCase("[display]")){
-            isExpanded = true;
+        if(style.equalsIgnoreCase("[display]")){
+            return true;
+        }else{
+            return false;
         }
-        return isExpanded;
     }
 
 }

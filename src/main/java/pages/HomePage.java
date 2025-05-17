@@ -31,7 +31,7 @@ public class HomePage extends BasePage {
 
     public DropdownMenuPage openDropdownMenuTab() {
         findElement(By.xpath(getElementXpathByOrder(3))).click();
-        return new DropdownMenuPage(driver);
+        return new DropdownMenuPage();
     }
 //
 //    public MouseOverPage openMouseOverTab() {

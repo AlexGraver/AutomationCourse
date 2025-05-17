@@ -1,3 +1,6 @@
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import core.BasePage;
 import core.configs.Configs;
 import core.driver.TestDriver;
 import org.aeonbits.owner.ConfigFactory;
@@ -14,13 +17,9 @@ public class BaseTest {
     private static final Configs CONFIGS = ConfigFactory.create(Configs.class);
 
     static public HomePage initUiTest(){
-        openPage(CONFIGS.baseUrl());
-        return new HomePage(TestDriver.getDriver());
-    }
-
-    @AfterAll
-    public static void tearDown(){
-        TestDriver.quitDriver();
+        Selenide.open(CONFIGS.baseUrl());
+        new BasePage(WebDriverRunner.getWebDriver());
+        return new HomePage(WebDriverRunner.getWebDriver());
     }
 
 }
