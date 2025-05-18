@@ -48,6 +48,19 @@ dependencies {
 
     //Selenide
     implementation 'com.codeborne:selenide:7.9.2'
+
+    //Playwright
+    implementation 'com.microsoft.playwright:playwright:1.44.0'
+}
+
+tasks.register('installPlaywright') {
+    doLast {
+        javaexec {
+            mainClass = 'com.microsoft.playwright.CLI'
+            classpath = sourceSets.test.runtimeClasspath
+            args = ['install']
+        }
+    }
 }
 
 test {
