@@ -4,9 +4,14 @@ import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import core.configs.Configs;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.Map;
 
 public class TestDriver {
     private static WebDriver driver;
@@ -16,19 +21,35 @@ public class TestDriver {
     private TestDriver(){}
 
     public static WebDriver getDriver() {
-        if(driver == null){
-            switch (configs.browser()) {
-                case "win_chrome":
-                    driver = new ChromeDriver();
-                    break;
-                case "win_edge":
-                    driver = new EdgeDriver();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unsupported browser: " + configs.browser());
+        String remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
+
+        if(remoteUrl != null || remoteUrl.isEmpty()){
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
+            try {
+                driver = new RemoteWebDriver(new URL(remoteUrl), options);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Malformed URL for Selenium Remote WebDriver", e);
             }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(configs.implicitWait()));
+        }else{
+            if(driver == null){
+                switch (configs.browser()) {
+                    case "win_chrome":
+                        driver = new ChromeDriver();
+                        break;
+                    case "win_edge":
+                        driver = new EdgeDriver();
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unsupported browser: " + configs.browser());
+                }
+                driver.manage().window().maximize();
+                driver.manage().timeouts().implicitlyWait(Duration.ofMillis(configs.implicitWait()));
+            }
         }
         return driver;
     }
