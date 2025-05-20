@@ -66,6 +66,7 @@ tasks.register('installPlaywright') {
 test {
     useJUnitPlatform()
     systemProperties System.getProperties()
+    environment "SELENIUM_REMOTE_URL", System.getenv("SELENIUM_REMOTE_URL")
 }
 
 allure {
