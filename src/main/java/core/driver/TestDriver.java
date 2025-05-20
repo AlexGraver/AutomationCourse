@@ -36,6 +36,7 @@ public class TestDriver {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
+            log.info("Options are created");
             try {
                 driver = new RemoteWebDriver(new URL(remoteUrl), options);
                 log.info("RemoteWebDriver initialized: " + (driver != null));
