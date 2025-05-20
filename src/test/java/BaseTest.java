@@ -6,6 +6,7 @@ import core.driver.TestDriver;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import testExtensions.ScreenshotOnFailureExtension;
 
@@ -17,9 +18,10 @@ public class BaseTest {
     private static final Configs CONFIGS = ConfigFactory.create(Configs.class);
 
     static public HomePage initUiTest(){
-        new BasePage(TestDriver.getDriver());
+        WebDriver driver = TestDriver.getDriver();
+        new BasePage(driver);
         openPage(CONFIGS.baseUrl());
-        return new HomePage(TestDriver.getDriver());
+        return new HomePage(driver);
     }
 
     static public HomePage initUiTestSelenide(){
