@@ -21,7 +21,7 @@ public class TestDriver {
     private TestDriver(){}
 
     public static WebDriver getDriver() {
-        String remoteUrl = "http://selenium:4444/wd/hub"; //System.getenv("SELENIUM_REMOTE_URL");
+        String remoteUrl = "http://localhost:4444/wd/hub"; //System.getenv("SELENIUM_REMOTE_URL");
         System.out.println("Using SELENIUM_REMOTE_URL: " + remoteUrl);
 
         if(remoteUrl != null && !remoteUrl.isEmpty()){
