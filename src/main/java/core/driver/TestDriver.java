@@ -7,13 +7,18 @@ import core.configs.Configs;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.invoke.MethodHandles;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Map;
 
 public class TestDriver {
+
+    public static Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static WebDriver driver;
     private static Configs configs = ConfigFactory.create(Configs.class);
 
@@ -22,7 +27,7 @@ public class TestDriver {
 
     public static WebDriver getDriver() {
         String remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
-        System.out.println("Using SELENIUM_REMOTE_URL: " + remoteUrl);
+        log.info("Using SELENIUM_REMOTE_URL: " + remoteUrl);
 
         if(remoteUrl != null && !remoteUrl.isEmpty()){
             ChromeOptions options = new ChromeOptions();
@@ -33,7 +38,7 @@ public class TestDriver {
             options.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
             try {
                 driver = new RemoteWebDriver(new URL(remoteUrl), options);
-                System.out.println("RemoteWebDriver initialized: " + (driver != null));
+                log.info("RemoteWebDriver initialized: " + (driver != null));
             } catch (MalformedURLException e) {
                 throw new RuntimeException("Malformed URL for Selenium Remote WebDriver", e);
             }
