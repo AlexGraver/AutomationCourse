@@ -9,7 +9,7 @@ public class DropdownMenuPageTest extends BaseTest{
 
     @BeforeEach
     void setUp(){
-        dropdownMenuPage = initUiTest().openDropdownMenuTab();
+        dropdownMenuPage = initUiTestSelenide().openDropdownMenuTab();
     }
 
     @Test

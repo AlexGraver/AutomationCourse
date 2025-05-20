@@ -17,9 +17,20 @@ public class BaseTest {
     private static final Configs CONFIGS = ConfigFactory.create(Configs.class);
 
     static public HomePage initUiTest(){
+        openPage(CONFIGS.baseUrl());
+        new BasePage(TestDriver.getDriver());
+        return new HomePage(TestDriver.getDriver());
+    }
+
+    static public HomePage initUiTestSelenide(){
         Selenide.open(CONFIGS.baseUrl());
         new BasePage(WebDriverRunner.getWebDriver());
         return new HomePage(WebDriverRunner.getWebDriver());
+    }
+
+    @AfterAll
+    public static void tearDown(){
+        TestDriver.quitDriver();
     }
 
 }
