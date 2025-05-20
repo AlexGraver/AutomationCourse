@@ -23,7 +23,7 @@ public class TestDriver {
     public static WebDriver getDriver() {
         String remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
 
-        if(remoteUrl != null || remoteUrl.isEmpty()){
+        if(remoteUrl != null || !remoteUrl.isEmpty()){
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--disable-gpu");
