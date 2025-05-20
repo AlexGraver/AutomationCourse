@@ -17,8 +17,8 @@ public class BaseTest {
     private static final Configs CONFIGS = ConfigFactory.create(Configs.class);
 
     static public HomePage initUiTest(){
-        openPage(CONFIGS.baseUrl());
         new BasePage(TestDriver.getDriver());
+        openPage(CONFIGS.baseUrl());
         return new HomePage(TestDriver.getDriver());
     }
 
