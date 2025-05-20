@@ -42,6 +42,17 @@ jobs:
     - name: Grant execute permission for Gradle
       run: chmod +x gradlew
 
+    - name: Wait for Selenium Grid to be ready
+      run: |
+            for i in {1..30}; do
+              if curl -s http://selenium:4444/wd/hub/status | grep -q '"ready":true'; then
+                echo "Selenium is ready"
+                break
+              fi
+              echo "Waiting for Selenium..."
+              sleep 2
+            done
+
     #- name: Debug SELENIUM_REMOTE_URL
     #  run: curl -s http://localhost:4444/wd/hub/status
 
