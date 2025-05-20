@@ -67,6 +67,10 @@ test {
     useJUnitPlatform()
     systemProperties System.getProperties()
     systemProperties System.getenv()
+    testLogging {
+        events "passed", "skipped", "failed", "standard_out", "standard_error"
+        showStandardStreams = true
+    }
 }
 
 allure {
