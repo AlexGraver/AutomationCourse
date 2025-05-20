@@ -40,7 +40,8 @@ public class TestDriver {
             try {
                 driver = new RemoteWebDriver(new URL(remoteUrl), options);
                 log.info("RemoteWebDriver initialized: " + (driver != null));
-            } catch (MalformedURLException e) {
+            } catch (Exception e) {
+                e.printStackTrace();
                 throw new RuntimeException("Malformed URL for Selenium Remote WebDriver", e);
             }
         }else{
