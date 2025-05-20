@@ -22,6 +22,7 @@ public class TestDriver {
 
     public static WebDriver getDriver() {
         String remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
+        System.out.println("Using SELENIUM_REMOTE_URL: " + remoteUrl);
 
         if(remoteUrl != null && !remoteUrl.isEmpty()){
             ChromeOptions options = new ChromeOptions();
@@ -32,6 +33,7 @@ public class TestDriver {
             options.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
             try {
                 driver = new RemoteWebDriver(new URL(remoteUrl), options);
+                System.out.println("RemoteWebDriver initialized: " + (driver != null));
             } catch (MalformedURLException e) {
                 throw new RuntimeException("Malformed URL for Selenium Remote WebDriver", e);
             }
