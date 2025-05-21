@@ -126,7 +126,7 @@ public class WebFormPage extends BasePage {
     }
 
     public void clickCheckedCheckbox(){
-        findElement(CHECKED_CHECKBOX).click();
+        waitUntilElementClickable(CHECKED_CHECKBOX).click();
     }
 
     public boolean checkedCheckboxIsSelected(){
@@ -134,7 +134,7 @@ public class WebFormPage extends BasePage {
     }
 
     public void clickDefaultCheckbox(){
-        findElement(CHECKED_CHECKBOX).click();
+        waitUntilElementClickable(DEFAULT_CHECKBOX).click();
     }
 
     public boolean defaultCheckboxIsSelected(){

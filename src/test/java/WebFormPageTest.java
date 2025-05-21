@@ -3,6 +3,7 @@ import core.driver.TestDriver;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
@@ -61,7 +62,7 @@ public class WebFormPageTest extends BaseTest{
     void returnToHomePageTest(){
         webFormPage.goToHomePage();
 
-        assertEquals(configs.baseUrl(), TestDriver.getDriver().getCurrentUrl());
+        assertEquals(configs.baseUrl() + "index.html", TestDriver.getDriver().getCurrentUrl());
     }
 
     @Test
@@ -72,8 +73,7 @@ public class WebFormPageTest extends BaseTest{
     @Test
     void readOnlyInputTest(){
         String currentText = webFormPage.getReadOnlyValue();
-        webFormPage.trySendKeys();
-        webFormPage.submitFormAndReturn();
+        Assertions.assertThrows(ElementNotInteractableException.class, ()-> webFormPage.trySendKeys());        webFormPage.submitFormAndReturn();
         String updatedText = webFormPage.getReadOnlyValue();
         assertEquals(currentText, updatedText);
     }
@@ -107,6 +107,7 @@ public class WebFormPageTest extends BaseTest{
     }
 
     @Test
+    @Disabled("Not implemented")
     void fileInputTest(){
         boolean notImplemented = true;
         Assertions.assertFalse(notImplemented, "Not implemented");
@@ -117,6 +118,7 @@ public class WebFormPageTest extends BaseTest{
         boolean checkedCheckboxSelected = webFormPage.checkedCheckboxIsSelected();
         Assertions.assertTrue(checkedCheckboxSelected, "Precondition should be true");
         webFormPage.clickCheckedCheckbox();
+        checkedCheckboxSelected = webFormPage.checkedCheckboxIsSelected();
         Assertions.assertFalse(checkedCheckboxSelected, "Result should be false");
     }
 
@@ -125,6 +127,7 @@ public class WebFormPageTest extends BaseTest{
         boolean defaultCheckboxSelected = webFormPage.defaultCheckboxIsSelected();
         Assertions.assertFalse(defaultCheckboxSelected, "Precondition should be true");
         webFormPage.clickDefaultCheckbox();
+        defaultCheckboxSelected = webFormPage.defaultCheckboxIsSelected();
         Assertions.assertTrue(defaultCheckboxSelected, "Result should be true");
     }
 
@@ -137,13 +140,16 @@ public class WebFormPageTest extends BaseTest{
         Assertions.assertTrue(radioChecked, "Precondition should be true");
         Assertions.assertFalse(radioUnchecked, "Precondition should be false");
 
-        webFormPage.clickCheckedRadio();
+        webFormPage.clickUncheckedRadio();
+        radioChecked = webFormPage.checkedRadioIsSelected();
+        radioUnchecked = webFormPage.checkedDefaultIsSelected();
 
         Assertions.assertFalse(radioChecked, "Result should be false");
         Assertions.assertTrue(radioUnchecked, "Result should be true");
     }
 
     @Test
+    @Disabled("Not implemented")
     void colorPickerTest(){
         boolean notImplemented = true;
         Assertions.assertFalse(notImplemented, "Not implemented");
