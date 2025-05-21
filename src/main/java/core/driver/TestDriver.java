@@ -39,6 +39,8 @@ public class TestDriver {
             log.info("Options are created");
             try {
                 driver = new RemoteWebDriver(new URL(remoteUrl), options);
+                driver.manage().window().maximize();
+                driver.manage().timeouts().implicitlyWait(Duration.ofMillis(configs.implicitWait()));
                 log.info("RemoteWebDriver initialized: " + (driver != null));
             } catch (Exception e) {
                 e.printStackTrace();
