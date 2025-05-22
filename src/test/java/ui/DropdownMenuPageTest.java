@@ -1,9 +1,11 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.DropdownMenuPage;
 
-public class DropdownMenuPageTest extends BaseTest{
+public class DropdownMenuPageTest extends BaseTest {
 
     DropdownMenuPage dropdownMenuPage;
 

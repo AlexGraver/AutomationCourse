@@ -1,3 +1,5 @@
+package ui;
+
 import core.driver.TestDriver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -5,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.NavigationPage;
 
-public class NavigationPageTest extends BaseTest{
+public class NavigationPageTest extends BaseTest {
 
     NavigationPage navigationPage;
 

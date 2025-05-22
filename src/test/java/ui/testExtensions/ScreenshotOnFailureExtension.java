@@ -1,4 +1,4 @@
-package testExtensions;
+package ui.testExtensions;
 
 import core.driver.TestDriver;
 import core.helpers.AllureHelper;

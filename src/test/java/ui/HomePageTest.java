@@ -1,3 +1,5 @@
+package ui;
+
 import core.configs.Configs;
 import core.driver.TestDriver;
 import org.aeonbits.owner.ConfigFactory;

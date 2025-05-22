@@ -1,3 +1,5 @@
+package ui;
+
 import core.driver.TestDriver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class FileInteractionTest extends BaseTest{
+public class FileInteractionTest extends BaseTest {
 
     @Test
     void downloadFile() throws IOException {

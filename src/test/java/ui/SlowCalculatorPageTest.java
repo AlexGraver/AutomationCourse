@@ -1,9 +1,11 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.SlowCalculatorPage;
 
-public class SlowCalculatorPageTest extends BaseTest{
+public class SlowCalculatorPageTest extends BaseTest {
 
     SlowCalculatorPage slowCalculatorPage;
 

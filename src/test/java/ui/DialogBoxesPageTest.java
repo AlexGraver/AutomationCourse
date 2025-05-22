@@ -1,8 +1,10 @@
+package ui;
+
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Alert;
 import pages.DialogBoxesPage;
 
-public class DialogBoxesPageTest extends BaseTest{
+public class DialogBoxesPageTest extends BaseTest {
 
     DialogBoxesPage dialogBoxesPage;
 

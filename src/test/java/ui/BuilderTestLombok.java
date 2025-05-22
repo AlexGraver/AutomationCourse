@@ -1,3 +1,5 @@
+package ui;
+
 import builders.User;
 import org.junit.jupiter.api.Test;
 

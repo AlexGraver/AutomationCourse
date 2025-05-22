@@ -1,3 +1,5 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -5,7 +7,7 @@ import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.SessionStorage;
 import pages.StoragePage;
 
-public class StoragePageTest extends BaseTest{
+public class StoragePageTest extends BaseTest {
 
     StoragePage storagePage;
 

@@ -1,11 +1,14 @@
+package ui;
+
 import deliveryOrder.DeliveryLoad;
 import deliveryOrder.DeliveryOrder;
+import deliveryOrder.DeliveryPriceCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeliveryPriceCalculatorTest {
-    private static  DeliveryPriceCalculator calculator;
+    private static DeliveryPriceCalculator calculator;
 
     @BeforeAll
     static void setUp(){

@@ -1,9 +1,11 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.CookiesPage;
 
-public class CookiesPageTest extends BaseTest{
+public class CookiesPageTest extends BaseTest {
 
     CookiesPage cookiesPage;
 

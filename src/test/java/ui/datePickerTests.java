@@ -1,3 +1,5 @@
+package ui;
+
 import pages.webFormPage.datePicker.DatePickerLevel_1;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;

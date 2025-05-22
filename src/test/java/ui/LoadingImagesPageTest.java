@@ -1,9 +1,11 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.LoadingImagesPage;
 
-public class LoadingImagesPageTest extends BaseTest{
+public class LoadingImagesPageTest extends BaseTest {
 
     static LoadingImagesPage loadingImagesPage;
 

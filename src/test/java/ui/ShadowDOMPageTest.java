@@ -1,10 +1,12 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.NoSuchElementException;
 import pages.ShadowDOMPage;
 
-public class ShadowDOMPageTest extends BaseTest{
+public class ShadowDOMPageTest extends BaseTest {
 
     ShadowDOMPage shadowDOMPage;
 

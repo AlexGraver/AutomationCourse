@@ -1,8 +1,10 @@
+package ui;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.LoadingImagesFluentPage;
 
-public class LoadingImagesFluentPageTest extends BaseTest{
+public class LoadingImagesFluentPageTest extends BaseTest {
 
     LoadingImagesFluentPage loadingImagesFluentPage;
 

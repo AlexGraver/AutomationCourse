@@ -1,3 +1,5 @@
+package ui;
+
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import core.BasePage;
@@ -8,7 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
-import testExtensions.ScreenshotOnFailureExtension;
+import ui.testExtensions.ScreenshotOnFailureExtension;
 
 import static core.BasePage.openPage;
 

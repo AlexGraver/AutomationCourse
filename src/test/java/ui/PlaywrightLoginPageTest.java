@@ -1,3 +1,5 @@
+package ui;
+
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 import pages.PlaywrightLoginPage;

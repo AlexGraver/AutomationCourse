@@ -1,3 +1,5 @@
+package ui;
+
 import core.configs.Configs;
 import core.driver.TestDriver;
 import org.aeonbits.owner.ConfigFactory;
@@ -14,7 +16,7 @@ import pages.webFormPage.WebFormPage;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WebFormPageTest extends BaseTest{
+public class WebFormPageTest extends BaseTest {
 
     WebFormPage webFormPage;
     Configs configs = ConfigFactory.create(Configs.class);

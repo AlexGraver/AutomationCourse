@@ -1,5 +1,6 @@
 import deliveryOrder.DeliveryLoad;
 import deliveryOrder.DeliveryOrder;
+import deliveryOrder.DeliveryPriceCalculator;
 
 public class Main {
     public static void main(String[] args){

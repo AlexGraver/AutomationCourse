@@ -1,5 +1,4 @@
-import deliveryOrder.DeliveryLoad;
-import deliveryOrder.DeliveryOrder;
+package deliveryOrder;
 
 public class DeliveryPriceCalculator {
 

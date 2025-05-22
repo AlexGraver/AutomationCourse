@@ -1,9 +1,11 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.InfiniteScrollPage;
 
-public class InfiniteScrollPageTest extends BaseTest{
+public class InfiniteScrollPageTest extends BaseTest {
 
     InfiniteScrollPage infiniteScrollPage;
 

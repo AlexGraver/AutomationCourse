@@ -1,3 +1,5 @@
+package ui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -5,7 +7,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import pages.DragAndDropPage;
 
-public class DragAndDropTest extends BaseTest{
+public class DragAndDropTest extends BaseTest {
 
     DragAndDropPage dragAndDropPage;
 
