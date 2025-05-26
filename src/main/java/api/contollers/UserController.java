@@ -32,7 +32,7 @@ public class UserController {
     public Response getUser(User user){
         return given(this.requestSpecification)
                 .when()
-                    .get()
+                    .get(BASE_URI + USER_ENDPOINT + "/" + user.getUsername())
                 .andReturn();
     }
 
@@ -40,7 +40,7 @@ public class UserController {
         return given(this.requestSpecification)
                     .body(user)
                 .when()
-                    .put()
+                    .put(BASE_URI + USER_ENDPOINT + "/" + user.getUsername())
                 .andReturn();
     }
 
@@ -48,7 +48,7 @@ public class UserController {
         return given(this.requestSpecification)
                     .body(user)
                 .when()
-                    .delete()
+                    .delete(BASE_URI + USER_ENDPOINT + "/" + user.getUsername())
                 .andReturn();
     }
 

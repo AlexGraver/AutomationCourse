@@ -10,6 +10,6 @@ public class TestUsers {
             .email("alex@macedonia.com")
             .password("qwe123")
             .phone("+26752330")
-            .userStatus(12)
+            .userStatus(0)
             .build();
 }
