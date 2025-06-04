@@ -54,6 +54,10 @@ dependencies {
 
     //RestAssured
     implementation 'io.rest-assured:rest-assured:5.5.3'
+
+    //JDBC
+    implementation 'com.h2database:h2:2.2.224'
+
 }
 
 tasks.register('installPlaywright') {

@@ -1,8 +1,6 @@
 package api.databaseActions.jdbc;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DataBaseCreation {
 
@@ -126,15 +124,12 @@ public class DataBaseCreation {
                     INSERT INTO public.zoo_animal (zoo_id, animal_id, time_apperance, workman) VALUES(1, 9, null, 3);
                     INSERT INTO public.zoo_animal (zoo_id, animal_id, time_apperance, workman) VALUES(2, 10, null, 4);""");
         } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Table creation result is negative");
             e.printStackTrace();
         }
     }
 
     private static void executeUpdate(String sql) throws SQLException, ClassNotFoundException {
-        //try with resources automatically will close connection after method execution
-        try (Connection connection = JdbcConnection.createConnection();
-             Statement statement = connection.createStatement()) {
-            statement.executeUpdate(sql);
-        }
+        JdbcConnection.createConnection().createStatement().executeUpdate(sql);
     }
 }
