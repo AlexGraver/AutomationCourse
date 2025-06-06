@@ -58,6 +58,9 @@ dependencies {
     //JDBC
     implementation 'com.h2database:h2:2.2.224'
 
+    //Hibernate
+    implementation 'org.hibernate.orm:hibernate-core:6.5.2.Final'
+
 }
 
 tasks.register('installPlaywright') {
