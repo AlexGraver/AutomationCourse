@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class HibernateTests {
 
@@ -63,6 +64,35 @@ public class HibernateTests {
                 .getSingleResult();
 
         assertEquals(10L, ((Number) object).longValue());
+    }
+
+    @Test
+    public void testWorkmanPositions() {
+        Object result = HibernateConnection
+                .createSessionFactory()
+                .openSession()
+                .createNativeQuery("""
+                        SELECT w.id, w."position" FROM public.workman w
+                        LEFT JOIN public.positions p ON w."position" = p.id
+                        WHERE p.id IS NULL
+                """).getFirstResult();
+
+        assertEquals(0, result); //there is no workers with NULL position
+    }
+
+    @Test
+    public void testZooAnimalRelation() {
+        Object result = HibernateConnection
+                .createSessionFactory()
+                .openSession()
+                .createNativeQuery("""
+                        SELECT COUNT(*) FROM public.zoo_animal
+                        WHERE zoo_id IN (SELECT id FROM public.zoo)
+                        AND animal_id IN (SELECT id FROM public.animal)
+                        AND workman IN (SELECT id FROM public.workman)
+                """).getSingleResult();
+
+        assertEquals(10, ((Number) result).intValue()); // count all relations of zoo_animal
     }
 
 }
