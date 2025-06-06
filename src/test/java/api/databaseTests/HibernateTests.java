@@ -2,12 +2,17 @@ package api.databaseTests;
 
 import api.databaseActions.hibernate.HibernateConnection;
 import api.databaseActions.hibernate.models.Animal;
+import api.databaseActions.hibernate.models.Places;
 import api.databaseActions.jdbc.DataBaseCreation;
 import api.databaseActions.jdbc.JdbcConnection;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.sql.SQLException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HibernateTests {
 
@@ -31,6 +36,33 @@ public class HibernateTests {
         System.out.printf("Table public.animal has exact %s rows%n", count);
 
         Assertions.assertEquals(10, count);
+    }
+
+    @Test
+    public void testPlacesTableCreationAndData(){
+        long count = HibernateConnection
+                .createSessionFactory()
+                .openSession()
+                .createQuery("SELECT COUNT(p) FROM Places p", Long.class)
+                .getSingleResult();
+
+        assertEquals(5L, count);
+    }
+
+    @Test
+    public void testAnimalForeignKeys() {
+        Object object = HibernateConnection
+                .createSessionFactory()
+                .openSession()
+                .createNativeQuery("""
+            SELECT COUNT(*) FROM public.animal a
+            WHERE a.place IN (SELECT p.id FROM public.places p)
+              AND a.sex IN (SELECT s.id FROM public.sex s)
+              AND a."type" IN (SELECT t.id FROM public."types" t)
+            """)
+                .getSingleResult();
+
+        assertEquals(10L, ((Number) object).longValue());
     }
 
 }
