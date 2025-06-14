@@ -32,6 +32,3 @@ RUN install -m 0755 -d /etc/apt/keyrings && \
 
 # Переключение на пользователя Jenkins
 USER jenkins
-
-# Установка плагина Allure для Jenkins
-RUN jenkins-plugin-cli --plugins allure-jenkins-plugin
