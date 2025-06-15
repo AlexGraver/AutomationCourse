@@ -13,6 +13,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - testnet
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    environment:
+      - SELENIUM_REMOTE_URL=http://selenium-hub:4444/wd/hub
 
   selenium-hub:
     image: selenium/hub:4.20.0

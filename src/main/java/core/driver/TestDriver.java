@@ -26,7 +26,7 @@ public class TestDriver {
     private TestDriver(){}
 
     public static WebDriver getDriver() {
-        remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
+        remoteUrl = System.getProperty("SELENIUM_REMOTE_URL");
         log.info("Using SELENIUM_REMOTE_URL: {}", remoteUrl);
         if(driver == null){
             if(remoteUrl != null){
